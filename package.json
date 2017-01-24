@@ -1,0 +1,17 @@
+{
+  "name": "petalstack_webservice_page_react_redux",
+  "version": "1.0.0",
+  "description": "Design for PetalStack WebService",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "PetalStack",
+    "WebService",
+    "React",
+    "Redux"
+  ],
+  "author": "João Henrique P. de Almeida",
+  "license": "ISC"
+}

@@ -1,0 +1,9 @@
+
+#Dependencies
+node_modules
+
+#For Testing
+coverage
+
+# For Production
+build
