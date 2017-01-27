@@ -15,7 +15,7 @@ class TodoList extends Component{
        items: [],
        item: '',
        formData: [],
-       name: 'e',
+       name: '',
        dateStart: moment(),
        dateEnd: moment()
      }
@@ -24,8 +24,12 @@ class TodoList extends Component{
      this.handleDateEnd = this.handleDateEnd.bind(this)
      this.handleSubmit = this.handleSubmit.bind(this)
      this.handleItem = this.handleItem.bind(this)
+     this.changeTitle = this.changeTitle.bind(this)
   }
 
+  changeTitle(e){
+    this.setState({name: e.target.value})
+  }
 
   handleItem(e){
     this.setState({item: e.target.value})
@@ -77,13 +81,34 @@ class TodoList extends Component{
         value: 'STOPED',
       }
     ]
+    const options = [
+  { key: 'angular', text: 'Angular', value: 'angular' },
+  { key: 'css', text: 'CSS', value: 'css' },
+  { key: 'design', text: 'Graphic Design', value: 'design' },
+  { key: 'ember', text: 'Ember', value: 'ember' },
+  { key: 'html', text: 'HTML', value: 'html' },
+  { key: 'ia', text: 'Information Architecture', value: 'ia' },
+  { key: 'javascript', text: 'Javascript', value: 'javascript' },
+  { key: 'mech', text: 'Mechanical Engineering', value: 'mech' },
+  { key: 'meteor', text: 'Meteor', value: 'meteor' },
+  { key: 'node', text: 'NodeJS', value: 'node' },
+  { key: 'plumbing', text: 'Plumbing', value: 'plumbing' },
+  { key: 'python', text: 'Python', value: 'python' },
+  { key: 'rails', text: 'Rails', value: 'rails' },
+  { key: 'react', text: 'React', value: 'react' },
+  { key: 'repair', text: 'Kitchen Repair', value: 'repair' },
+  { key: 'ruby', text: 'Ruby', value: 'ruby' },
+  { key: 'ui', text: 'UI Design', value: 'ui' },
+  { key: 'ux', text: 'User Experience', value: 'ux' },
+]
+
 
 
   return (
       <Container>
 
       <Form.Group widths='equal'>
-        <Form.Input label='Title Task' value={this.state.name} />
+        <Form.Input label='Title Task' onChange={this.changeTitle} value={this.state.name} />
         <Form.Field>
           <label>Start Date</label>
           <DatePicker placeholder="Start Date"  selected={this.state.dateStart} onChange={this.handleDateStart}  />
@@ -100,17 +125,23 @@ class TodoList extends Component{
       <Form.Group widths='equal'>
 
       <Form.TextArea label='Description' placeholder='Try adding multiple lines' autoHeight />
-
+      <Form.Field>
+        <label>Tags</label>
+        <Dropdown placeholder='Skills' fluid multiple selection options={options} />
+      </Form.Field>
       </Form.Group>
+
+
       <Container textAlign="center">
         <Form.Group widths="equal" >
           <Form.Input label='Todo' onChange={this.handleItem} value={this.state.item} />
           <br/>
+
         </Form.Group>
       </Container>
       <Container textAlign="right">
-          <Button color='facebook'>
-          <Icon name='facebook' /> Facebook
+          <Button color='facebook' onClick={this.addItem}>
+          <Icon name='add' /> Add To Do
           </Button>
       </Container>
       <br/>

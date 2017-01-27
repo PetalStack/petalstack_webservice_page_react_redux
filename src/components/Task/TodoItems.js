@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 import { Button, Image, List, Grid, Segment,
    Table, Checkbox } from 'semantic-ui-react'
 
 class TodoItems extends Component{
-  constructor(){
+  constructor(props){
     super()
     this.state = {
       key: '',
       text: '',
       checked: false
-    }
-
+     }
+    console.log(this.props);
     this.clickStatus = this.clickStatus.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
@@ -33,7 +33,6 @@ class TodoItems extends Component{
         <Table.Cell>
         <Checkbox label={item.text}
          checked={item.checked}
-         onClick={z}
        />
         </Table.Cell>
         <Table.Cell></Table.Cell>
@@ -62,7 +61,7 @@ class TodoItems extends Component{
       }
 
     ]
-    let listEntries = todo
+    let listEntries = this.props.items
     let listItems = listEntries.map(this.createListItems)
 
     return(
